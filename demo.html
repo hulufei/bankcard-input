@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="bankcard.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('input.default').bankcard();
+            $('input.custom').bankcard({ pop: 'bankcard-em' });
+        });
+    </script>
+
+    <style type="text/css">
+        body {
+            padding: 1em;
+        }
+        form {
+            margin-bottom: 3em;
+        }
+        .bankcard-em {
+            width: 218px;
+            position: relative;
+            top: -2.5em;
+            border: 1px solid #CCC;
+            background: #FFF;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <pre>$('input.default').bankcard();</pre>
+        <input class="default" type="text" />
+    </form>
+    <form action="">
+        <pre>$('input.custom').bankcard({ pop: 'bankcard-em' });</pre>
+        <input class="custom" type="text" />
+    </form>
+</body>
+</html>
