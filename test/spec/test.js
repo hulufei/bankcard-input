@@ -83,4 +83,13 @@ describe('Bankcard Input Plugin', function () {
 
     expect(this.$input.siblings('div').is(':hidden')).to.be.true;
   });
+
+  it('should be show again when input number', function() {
+    this.$input.bankcard();
+    this.$input.autotype('1{{back}}');
+    this.$input.autotype('1');
+
+    expect(this.$input.siblings('div').length).to.be.equal(1);
+    expect(this.$input.siblings('div').is(':hidden')).to.be.false;
+  });
 });

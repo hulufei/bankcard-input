@@ -1,7 +1,10 @@
 /**
- * Bank card input control plugin, split card number into 4 groups, every
- * group include 4 numbers. And a pop layer will show up to emphasize the
- * input value.
+ * Bank card input control plugin
+ *
+ * Split card number into 4 groups, every group include 4 numbers. 
+ * And a pop layer will show up to emphasize the input value.
+ *
+ * https://github.com/hulufei/bankcard-input.git 
  *
  */
 ~function($) {
@@ -32,6 +35,9 @@
         if (popClass) $pop.addClass(popClass);
 
         $input.after($pop);
+      }
+      else {
+        $pop.show();
       }
     });
 
