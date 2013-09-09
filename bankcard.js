@@ -20,17 +20,14 @@
         , value = $input.val()
         , position;
 
-      if (!/[\d\b]/.test(s) || /^(\d{4}\s){3}\d{4}$/.test(value)) return false;
+      if (e.which !== 8 && 
+          (!/\d/.test(s) || /^(\d{4}\s){3}\d{4}$/.test(value))) return false;
 
       // Else input number
       if (!$pop) {
         position = $input.position();
 
-        $pop = $('<div/>').css({
-          position: 'relative',
-          left: position.left,
-          top: position.top - $input.height()
-        });
+        $pop = $('<div/>');
 
         if (popClass) $pop.addClass(popClass);
 

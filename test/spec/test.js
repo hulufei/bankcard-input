@@ -71,10 +71,18 @@ describe('Bankcard Input Plugin', function () {
 
   it('should limit to 16 numbers', function() {
     this.$input.bankcard();
-    this.$input.autotype('8888 8888 8888 8888');
+    this.$input.autotype('8888 8888 8888 8888 9');
 
     expect(this.$input.val()).to.equal('8888 8888 8888 8888');
     expect(this.$input.siblings('div').text()).to.be.equal('8888 8888 8888 8888');
+  });
+
+  it('should delete back when reach to 16 numbers', function() {
+    this.$input.bankcard();
+    this.$input.autotype('8888 8888 8888 8888{{back}}');
+
+    expect(this.$input.val()).to.equal('8888 8888 8888 888');
+    expect(this.$input.siblings('div').text()).to.be.equal('8888 8888 8888 888');
   });
 
   it('should hide the emphasize layer when input empty', function() {
