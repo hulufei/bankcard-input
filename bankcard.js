@@ -65,7 +65,7 @@
 
     // Show the pop layer when focus
     $input.on('focus', function() {
-      if ($pop) $pop.show();
+      if ($pop && $(this).val() !== '') $pop.show();
     });
   };
 }(jQuery);

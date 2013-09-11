@@ -3,7 +3,7 @@
 
 describe('Bankcard Input Plugin', function () {
   beforeEach(function() {
-    this.$fixture = $('<div/>').appendTo('body');
+    this.$fixture = $('<form/>').appendTo('body');
     this.$input = $('<input type="text"/>').appendTo(this.$fixture);
   });
 
@@ -124,5 +124,16 @@ describe('Bankcard Input Plugin', function () {
 
     expect(this.$input.siblings('div').length).to.be.equal(1);
     expect(this.$input.siblings('div').is(':hidden')).to.be.false;
+  });
+
+  it('should not show when input focus is empty', function() {
+    this.$input.bankcard();
+    this.$input.autotype('1');
+    this.$input.trigger('blur');
+    this.$fixture.trigger('reset');
+    this.$input.trigger('focus');
+
+    expect(this.$input.siblings('div').length).to.be.equal(1);
+    expect(this.$input.siblings('div').is(':hidden')).to.be.true;
   });
 });
