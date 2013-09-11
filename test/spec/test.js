@@ -69,6 +69,14 @@ describe('Bankcard Input Plugin', function () {
     expect(this.$input.siblings('div').text()).to.be.equal('1234');
   });
 
+  it('should split numbers into groups input after delete back', function() {
+    this.$input.bankcard();
+    this.$input.autotype('1234{{back}}5');
+
+    expect(this.$input.val()).to.equal('1234 5');
+    expect(this.$input.siblings('div').text()).to.be.equal('1234 5');
+  });
+
   it('should limit to 16 numbers', function() {
     this.$input.bankcard();
     this.$input.autotype('8888 8888 8888 8888 9');
