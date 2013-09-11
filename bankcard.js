@@ -57,5 +57,15 @@
 
       if ($pop) $pop.html(value);
     });
+
+    // Hide the pop layer when blur
+    $input.on('blur', function() {
+      if ($pop) $pop.hide();
+    });
+
+    // Show the pop layer when focus
+    $input.on('focus', function() {
+      if ($pop) $pop.show();
+    });
   };
 }(jQuery);

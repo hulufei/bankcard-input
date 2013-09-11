@@ -100,10 +100,27 @@ describe('Bankcard Input Plugin', function () {
     expect(this.$input.siblings('div').is(':hidden')).to.be.true;
   });
 
+  it('should hide the emphasize layer when input blur', function() {
+    this.$input.bankcard();
+    this.$input.autotype('1');
+    this.$input.trigger('blur');
+
+    expect(this.$input.siblings('div').is(':hidden')).to.be.true;
+  });
+
   it('should be show again when input number', function() {
     this.$input.bankcard();
     this.$input.autotype('1{{back}}');
     this.$input.autotype('1');
+
+    expect(this.$input.siblings('div').length).to.be.equal(1);
+    expect(this.$input.siblings('div').is(':hidden')).to.be.false;
+  });
+
+  it('should be show again when input focus again', function() {
+    this.$input.bankcard();
+    this.$input.autotype('1');
+    this.$input.trigger('blur').trigger('focus');
 
     expect(this.$input.siblings('div').length).to.be.equal(1);
     expect(this.$input.siblings('div').is(':hidden')).to.be.false;
