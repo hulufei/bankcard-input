@@ -77,7 +77,7 @@ describe('Bankcard Input Plugin', function () {
     expect(this.$input.siblings('div').text()).to.be.equal('1234 5');
   });
 
-  it('should limit to 16 numbers', function() {
+  it('should limit to 16 numbers by default', function() {
     this.$input.bankcard();
     this.$input.autotype('8888 8888 8888 8888 9');
 
@@ -85,7 +85,23 @@ describe('Bankcard Input Plugin', function () {
     expect(this.$input.siblings('div').text()).to.be.equal('8888 8888 8888 8888');
   });
 
-  it('should delete back when reach to 16 numbers', function() {
+  it('should limit to specified divisibility numbers', function() {
+    this.$input.bankcard({ limit: 20 });
+    this.$input.autotype('8888 8888 8888 8888 8888 9');
+
+    expect(this.$input.val()).to.equal('8888 8888 8888 8888 8888');
+    expect(this.$input.siblings('div').text()).to.be.equal('8888 8888 8888 8888 8888');
+  });
+
+  it('should limit to specified indivisibility numbers', function() {
+    this.$input.bankcard({ limit: 21 });
+    this.$input.autotype('8888 8888 8888 8888 8888 99');
+
+    expect(this.$input.val()).to.equal('8888 8888 8888 8888 8888 9');
+    expect(this.$input.siblings('div').text()).to.be.equal('8888 8888 8888 8888 8888 9');
+  });
+
+  it('should delete back when reach to limited numbers', function() {
     this.$input.bankcard();
     this.$input.autotype('8888 8888 8888 8888{{back}}');
 

@@ -13,6 +13,7 @@
 
     var $input = this
       , $pop
+      , limit = options.limit || 16
       , popClass = options.pop || '';
 
     $input.on('keypress', function(e) {
@@ -21,7 +22,7 @@
         , position;
 
       if (e.which !== 8 &&
-          (!/\d/.test(s) || /^(\d{4}\s){3}\d{4}$/.test(value))) return false;
+          (!/\d/.test(s) || value.replace(/\s/g, '').length === limit)) return false;
 
       // Else input number
       if (!$pop) {

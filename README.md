@@ -19,3 +19,4 @@ With specified popover class:
 ## Options
 
 - `option.pop` `{String}` styles for the pop layer.
+- `option.limit` `{Number}` limited card numbers.
